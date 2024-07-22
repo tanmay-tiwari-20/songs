@@ -1,19 +1,15 @@
 import React from 'react'
 
-function Card({data, handleClick, index}) {
-
-  const {image, name, artist, added} = data;
-
+function Card({ user, handleRemove, id}) {
   return (
-    <div className='w-60 bg-zinc-100 p-4 rounded-md flex gap-4 pb-8 relative mt-10'>
-      <div className='w-20 h-20 bg-orange-600 rounded-md'>
-        <img className='w-full h-full rounded-md object-cover' src={image} alt="" />
+    <div className='w-52 h-[15rem] bg-zinc-100 rounded-lg flex flex-col items-center p-2'>
+      <div className='image w-20 h-20 rounded-full bg-zinc-200 overflow-hidden'>
+        <img className='w-full h-full object-cover' src={user.image} alt={user.name} />
       </div>
-      <div className=''>
-        <h3 className='text-xl leading-none font-semibold'>{name}</h3>
-        <h6 className='text-sm'>{artist}</h6>
-      </div>
-      <button onClick={()=>handleClick(index)} className={`px-4 py-3 ${added === false ? "bg-orange-600" : "bg-teal-600"} absolute bottom-0 left-1/2 -translate-x-[50%] translate-y-[50%] whitespace-nowrap text-white text-xs rounded-full`}>{added === false ? "Add to Favourites" : "Added"}</button>
+      <h1 className='mt-1 text-xl font-semibold text-center leading-none'>{user.name}</h1>
+      <h4 className='opacity-60 text-xs font-semibold'>{user.email}</h4>
+      <p className='mt-1 text-center text-xs font-semibold leading-none tracking-tight'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, consequuntur?</p>
+      <button onClick={()=>handleRemove(id)} className='px-3 py-1 bg-red-600 text-xs rounded-md font-semibold text-white mt-4'>Remove It</button>
     </div>
   )
 }
